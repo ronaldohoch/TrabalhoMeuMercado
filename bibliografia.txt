@@ -1,0 +1,7 @@
+https://github.com/jasmine/jasmine/tree/master/src/core/matchers
+
+http://stackoverflow.com/questions/31947852/how-to-test-angular-app-with-john-papa-style-karma-and-jasmine-with-data-servi
+
+http://stackoverflow.com/questions/28456747/how-to-test-john-papa-vm-model-unit-testing-with-jasmine
+
+http://plnkr.co/edit/KZGKM6?p=info
