@@ -11,6 +11,11 @@ function baseCtrl($scope, $http){
 	var vm = this;
 	vm.active = true;
 
+	vm.fields={
+		tipoProduto:"",
+		nomeProduto:""
+	};
+
 	/*ações*/
 	vm.listarProduto = listarProduto;
 	vm.buscarProduto = buscarProduto;
