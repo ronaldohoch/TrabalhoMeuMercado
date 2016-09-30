@@ -15,7 +15,7 @@
 		</div>
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
-				<button type="submit" class="btn btn-default">Buscar</button>
+				<button type="submit" class="btn btn-default" ng-click="vm.listarProduto();">Buscar</button>
 			</div>
 		</div>
 	</form>
@@ -33,20 +33,12 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
-			<th scope="row">1</th>
-			<td>Mark</td>
-			<td>Otto</td>
-			<td>@mdo</td>
-			<td>@mdo</td>
-			<td></td>
-		</tr>
-		<tr>
-			<th scope="row">1</th>
-			<td>Mark</td>
-			<td>Otto</td>
-			<td>@mdo</td>
-			<td>@mdo</td>
+		<tr ng-repeat="p in vm.produtos" >
+			<td>{{p.id}}</td>
+			<td>{{p.nome}}</td>
+			<td>{{p.tipo}}</td>
+			<td>{{p.valor}}</td>
+			<td>{{p.estoque}}</td>
 			<td></td>
 		</tr>
 	</tbody>
