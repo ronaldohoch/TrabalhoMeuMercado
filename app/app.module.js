@@ -5,10 +5,14 @@ angular
 
 		$routeProvider
 			.when("/listagem",{
-				templateUrl:"views/listagem.html"
+				templateUrl:"views/listagem.html",
+				activetab:"listagem"
 			})
 			.when("/cadastrar",{
-				templateUrl:"views/cadastrar.html"
+				templateUrl:"views/cadastrar.html",
+				activetab:"cadastrar"
 			})
 			.otherwise({redirectTo:"/listagem"});
+	}).run(function($rootScope,$route){
+		$rootScope.$route = $route;
 	});

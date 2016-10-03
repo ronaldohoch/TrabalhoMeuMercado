@@ -1,45 +1,74 @@
-<div class="jumbotron">
-	<h1>Lista de produtos</h1>
-	<form class="form-horizontal" submit="">
-		<div class="form-group">
-			<label for="tipo" class="col-sm-2 control-label">Tipo</label>
-			<div class="col-sm-10">
-				<input type="text" class="form-control" id="tipo" placeholder="Tipo de produto">
+<div class="row">
+	<div class="col-md-12 col-sm-12 col-xs-12">
+		<div class="x_panel">
+			<div class="x_title">
+				<h2>Buscar produtos</h2>
+				<div class="clearfix"></div>
+			</div>
+			<div class="x_content">
+				<form class="form-horizontal form-label-left" ng-submit="vm.listarProduto();" name="buscaProduto" novalidate>
+					<div class="form-group">
+						<label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome" >Nome</label>
+						<div class="col-md-6 col-sm-6 col-xs-12">
+							<input type="text" id="nome" class="form-control col-md-7 col-xs-12" name="nome" ng-model="vm.fields.nome">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-3 col-sm-3 col-xs-12" for="tipo">Tipo</label>
+						<div class="col-md-6 col-sm-6 col-xs-12">
+							<input type="text" id="tipo" class="form-control col-md-7 col-xs-12" name="tipo" ng-model="vm.fields.tipo">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+							<button ng-click="vm.fields={};vm.listarProduto();" class="btn btn-primary">Limpar campos</button>
+							<button type="submit" class="btn btn-success">Buscar</button>
+						</div>
+					</div>
+				</form>
 			</div>
 		</div>
-		<div class="form-group">
-			<label for="nome" class="col-sm-2 control-label">Nome</label>
-			<div class="col-sm-10">
-				<input type="text" class="form-control" id="nome" placeholder="Nome do produto">
-			</div>
-		</div>
-		<div class="form-group">
-			<div class="col-sm-offset-2 col-sm-10">
-				<button type="submit" class="btn btn-default" ng-click="vm.listarProduto();">Buscar</button>
-			</div>
-		</div>
-	</form>
+	</div>
 </div>
 
-<table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Código</th>
-			<th>Nome</th>
-			<th>Tipo</th>
-			<th>Valor</th>
-			<th>Estoque</th>
-			<th>Ações</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr ng-repeat="p in vm.produtos" >
-			<td>{{p.id}}</td>
-			<td>{{p.nome}}</td>
-			<td>{{p.tipo}}</td>
-			<td>{{p.valor}}</td>
-			<td>{{p.estoque}}</td>
-			<td></td>
-		</tr>
-	</tbody>
-</table>
+<div class="row">
+	<div class="col-md-12 col-sm-12 col-xs-12">
+		<div class="x_panel">
+			<div class="x_title">
+				<h2>Produtos Cadastrados</h2>
+				<div class="clearfix"></div>
+			</div>
+			<div class="x_content" style="display: block;">
+				<table class="table table-striped" ng-show="vm.produtos.length>0">
+					<thead>
+						<tr>
+							<th>Código</th>
+							<th>Nome</th>
+							<th>Tipo</th>
+							<th>Valor</th>
+							<th>Estoque</th>
+							<th>Ações</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="p in vm.produtos" >
+							<td>{{p.id}}</td>
+							<td>{{p.nome}}</td>
+							<td>{{p.tipo}}</td>
+							<td>{{p.valor}}</td>
+							<td>{{p.estoque}}</td>
+							<td>
+								<a href=""><i class="fa fa-trash"></i></a>
+								<a href=""><i class="fa fa-pencil"></i></a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<div class="alert alert-warning alert-dismissible fade in" role="alert" ng-show="vm.produtos.length<=0">
+					<strong>Opss!</strong> Nenhum produto encontrado!.
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
