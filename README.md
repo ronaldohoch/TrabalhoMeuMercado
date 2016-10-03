@@ -34,3 +34,10 @@ CÓDIGO | NOME | TIPO | VALOR | ESTOQUE
 003 | Pepsi Cola 2L | Refrigerante | 3,00 | 800
 004 | Guaraná Charrua 2L | Refrigerante | 2,50 | 340
 005 | Bis branco | Chocolate | 2,70 | 50 
+
+----------
+
+Bugs propositais para a aula:
+
+* Não valida campos.
+* Pesquisa com 2 campos só retora o valor de 1
