@@ -40,4 +40,4 @@ CÓDIGO | NOME | TIPO | VALOR | ESTOQUE
 Bugs propositais para a aula:
 
 * Não valida campos.
-* Pesquisa com 2 campos só retora o valor de 1
+* Pesquisa com 2 campos só retorna o valor de 1
