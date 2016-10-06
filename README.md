@@ -40,4 +40,8 @@ CÓDIGO | NOME | TIPO | VALOR | ESTOQUE
 Bugs propositais para a aula:
 
 * Não valida campos.
-* Pesquisa com 2 campos só retora o valor de 1
+* Pesquisar com 2 campos só retora o valor de 1 campo.
+* Mensagem de erro com o título "sucesso".
+* Se clicar em cima do link ativo, ele sai a marcação de ativo.
+* Gambiarra no app.base.controller.js na linha 96.
+* Botão da modal de edição em inglês.

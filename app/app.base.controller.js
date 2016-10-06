@@ -12,12 +12,14 @@ function baseCtrl($scope, $http, $q, $timeout){
 	vm.produtos=[];
 	vm.fields={};
 	vm.novoProduto={};
+	vm.pin;
+	vm.produtoParaEditar;
 
 	/*ações*/
 	vm.listarProduto = listarProduto;
 	vm.cadastrarProduto = cadastrarProduto;
-	vm.excluirProduto = excluirProduto;
-	vm.alterarProduto = alterarProduto;
+	vm.verificaPin = verificaPin;
+	vm.salvarEdicao = salvarEdicao;
 
 	/*funções*/
 
@@ -79,8 +81,89 @@ function baseCtrl($scope, $http, $q, $timeout){
 				});
 			});
 	}
-	function excluirProduto(){}
-	function alterarProduto(){}
+	function verificaPin(id,action){
+		var pin = prompt("Digite o pin para proceguir","1234");
+		if(pin==1234){
+			switch(action){
+				case 1:
+					excluirProduto(id);
+				break;
+				case 2:
+					cadastrarProduto();
+				break;
+				case 3:
+					vm.produtoParaEditar = angular.copy(id);
+					// vm.produtoParaEditar=id
+					//coisa feia
+					$(".edit-modal").click();
+				break;
+				default:
+
+				break;
+			}
+		}else{
+			if(pin!=null)
+				new PNotify({
+					title: 'Sucesso!',
+					text: 'Pin inválido.',
+					type: 'error',
+					styling: 'bootstrap3'
+				});
+		}
+	}
+	function excluirProduto(id){
+		if(window.confirm("Deseja realmente excluir?")){
+			meuMercado.db.transaction(function(tx){
+				tx.executeSql("DELETE FROM PRODUTOS WHERE id = ?",
+					[id],
+					function(tx,result){
+						new PNotify({
+							title: 'Sucesso!',
+							text: 'Produto excluído com sucesso!',
+							type: 'success',
+							styling: 'bootstrap3'
+						});
+						listarProduto();
+					},
+					function(tx,err){
+						new PNotify({
+							title: 'Erro!',
+							text: 'Não foi possível excluir o produto.',
+							type: 'error',
+							styling: 'bootstrap3'
+						});
+						console.log(err);
+					});
+			})
+		}
+	}
+	function salvarEdicao(){
+		// vm.produtoParaEditar
+
+		meuMercado.db.transaction(function(tx){
+			tx.executeSql('UPDATE PRODUTOS SET nome=?,tipo=?,valor=?,estoque=? WHERE id = ?',
+			[vm.produtoParaEditar.nome, vm.produtoParaEditar.tipo, vm.produtoParaEditar.valor, vm.produtoParaEditar.estoque, vm.produtoParaEditar.id],
+			function(tx,result){
+				new PNotify({
+					title: 'Sucesso!',
+					text: 'Produto atualizado com sucesso!',
+					type: 'success',
+					styling: 'bootstrap3'
+				});
+				listarProduto();
+			},function(tx,err){
+				console.warn("err",err);
+				new PNotify({
+					title: 'Sucesso!',
+					text: 'Erro ao atualizar.',
+					type: 'error',
+					styling: 'bootstrap3'
+				});
+			});
+		});
+	}
 
 	listarProduto();
+
+	//Feiosos
 }

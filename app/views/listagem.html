@@ -58,8 +58,8 @@
 							<td>{{p.valor}}</td>
 							<td>{{p.estoque}}</td>
 							<td>
-								<a href=""><i class="fa fa-trash"></i></a>
-								<a href=""><i class="fa fa-pencil"></i></a>
+								<a data-ng-click="vm.verificaPin(p.id,1);" class="cursor"><i class="fa fa-trash"></i></a>
+								<a data-ng-click="vm.verificaPin(p,3);" class="cursor"><i class="fa fa-pencil"></i></a>
 							</td>
 						</tr>
 					</tbody>
@@ -69,6 +69,42 @@
 					<strong>Opss!</strong> Nenhum produto encontrado!.
 				</div>
 			</div>
+		</div>
+	</div>
+</div>
+
+
+<button type="button" style="display:none;" class="btn btn-primary edit-modal" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
+
+<div class="modal fade bs-example-modal-sm in" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title" id="myModalLabel2">Editar produto</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal form-label-left" ng-submit="vm.salvarEdicao();" novalidate>
+					<div class="form-group">
+						<label class="control-label col-md-3 col-sm-3 col-xs-12" for="valor">Valor</label>
+						<div class="col-md-6 col-sm-6 col-xs-12">
+							<input type="number" min="0" steps="0.01" class="form-control col-md-7 col-xs-12" name="valor" id="valor" ng-model="vm.produtoParaEditar.valor">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-3 col-sm-3 col-xs-12" for="estoque">Estoque</label>
+						<div class="col-md-6 col-sm-6 col-xs-12">
+							<input type="number" min="0" steps="0.01" class="form-control col-md-7 col-xs-12" name="estoque" id="estoque" ng-model="vm.produtoParaEditar.estoque">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button class="btn btn-primary" type="submit">Save changes</button>
+					</div>
+				</form>
+			</div>
+
 		</div>
 	</div>
 </div>
