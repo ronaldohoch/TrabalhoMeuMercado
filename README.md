@@ -45,3 +45,4 @@ Bugs propositais para a aula:
 * Se clicar em cima do link ativo, ele sai a marcação de ativo.
 * Gambiarra no app.base.controller.js na linha 96.
 * Botão da modal de edição em inglês.
+* O sistema permite o cadastro de produtos com o mesmo nome.
