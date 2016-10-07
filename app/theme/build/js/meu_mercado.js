@@ -4,11 +4,10 @@ var meuMercado = {
 
     init: function () {
         this.db = openDatabase('meu_mercado', '1.0', 'DB trabalho meu mercado', 2 * 1024 * 1024);
-        meuMercado.count();
+        meuMercado.criatabela();
     },
 
     template: function(){
-        meuMercado.criatabela();
         meuMercado.insertExemple();
     },
 
@@ -32,7 +31,7 @@ var meuMercado = {
 
     criatabela: function () {
         meuMercado.db.transaction (function (tx) {
-            tx.executeSql ("CREATE TABLE IF NOT EXISTS PRODUTOS (nome TEXT, tipo TEXT, valor DECIMAL, estoque INT )",null,null);
+            tx.executeSql ("CREATE TABLE IF NOT EXISTS PRODUTOS (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, nome TEXT, tipo TEXT, valor DECIMAL, estoque INT )",meuMercado.count,meuMercado.count);
         });
     },
 
